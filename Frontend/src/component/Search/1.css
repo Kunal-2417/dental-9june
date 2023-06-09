@@ -1,0 +1,123 @@
+.outer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.searchbox {
+  text-align: center;
+  padding: 20px;
+  background-color: rgb(209, 200, 200);
+  border-radius: 10px;
+}
+
+.text1 h1 {
+  font-size: 30px;
+  margin: 0;
+}
+
+.text2 {
+  font-size: 18px;
+  margin-top: 10px;
+  color: #f1568a;
+}
+
+.bar {
+display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  /* background-color: #007bff; */
+}
+
+.input-field {
+  display: flex;
+  align-items: center;
+  
+}
+
+.form-control {
+  margin-top: 1rem;
+  height:38px;
+  width: 300px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-right: none;
+  border-radius: 20px 20px 20px 20px;
+}
+
+.btn1 {
+  color: white;
+  height: 38px;
+  padding: 0 15px;
+  border: 1px solid #f48282;
+  border-left: none;
+  background-color: #f1568a;
+  border-radius:50%;
+}
+
+.companiesbox {
+  margin-top: 40px;
+}
+
+.companiesbox h3 {
+  font-size: 18px;
+  margin: 0;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 10px;
+  margin-top: 10px;
+}
+
+.box {
+  border: 1px solid #464545;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.checkbox-circle2 {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.checkbox-circle2 input[type="checkbox"] {
+  display: none;
+}
+
+.checkbox-circle2 label {
+  margin-left: 5px;
+}
+
+.checkbox-circle2 label:before {
+  content: "";
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  vertical-align: middle;
+}
+
+.checkbox-circle2 input[type="checkbox"]:checked+label:before {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.checkbox-circle2 input[type="checkbox"]:checked+label:after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 4px;
+  height: 8px;
+  border: solid #fff;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+  top: 2px;
+  left: 6px;
+}
