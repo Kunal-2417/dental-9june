@@ -5,17 +5,17 @@ import { useNavigate } from 'react-router-dom';
 const Search = () => {
   const navigate = useNavigate(); // Navigate hook
   const [companies, setCompanies] = useState({
+    Amplemeds: false,
+    Daantwale: false,
     Dentalstall: false,
-    Pinkblue: false,
+    Dentaltix: false,
+    Dentalworld: false,
+    Greenguava: false,
     Libraltraders: false,
     Medikabazaar: false,
-    Daantwale: false,
-    Dentalworld: false,
-    Amplemeds: false,
     Mydentalstock: false,
-    Greenguava: false,
+    Pinkblue: false,
     Thedentaldealer: false,
-    Dentaltix:false
   });
 
   const handleCompanyChange = (companyName) => {
@@ -63,7 +63,7 @@ const Search = () => {
             <h3>Websites Filter</h3>
             <div className="grid-container">
               {Object.entries(companies).map(([company, isSelected]) => (
-                <div className="box" key={company}>
+                <div className="boxse" key={company}>
                   <div className="item">
                     <div className="checkbox-circle2">
                       <input

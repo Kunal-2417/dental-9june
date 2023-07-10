@@ -19,7 +19,7 @@ const Header = () => {
       <header className='header'>
         <div className='container d_flex'>
           <div className='logo'>
-            <img src={logo} alt='' style={{width:'60px',borderRadius:'50%', border:'5px solid #ccc'}}/>
+            <img src={logo} alt='' style={{width:'40px',borderRadius:'50%', border:'5px solid #ccc'}}/>
           </div>
 
           <div className='navlink'>
@@ -30,7 +30,7 @@ const Header = () => {
               </li>
 
               <li >
-                <NavLink to="/Search">AllProducts</NavLink>
+                <NavLink to="/Search">search</NavLink>
               </li>
               <li>
                 <a href='#portfolio'>popular products</a>
@@ -50,13 +50,13 @@ const Header = () => {
              {
               isAuthenticated ?
               <li>
-              <button onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })} className='home-btn'>
+              <button onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })} >
                 Log Out
               </button>
               </li>
             : 
             <li>
-            <button onClick={() => loginWithRedirect()} className='home-btn'>Log In</button>
+            <button className="apply-btn"onClick={() => loginWithRedirect()} >Log In</button>
           </li>
              }
 

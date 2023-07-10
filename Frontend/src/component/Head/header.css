@@ -1,9 +1,10 @@
-header {
+/* header {
   height: 10vh;
   line-height: 10vh;
-}
+} */
 header .container {
-  padding-top: 15px;
+  padding-top: 8px;
+  height: 50px;
 }
 header ul li {
   margin-left: 30px;
@@ -15,7 +16,7 @@ header ul li a {
   letter-spacing: 1px;
 }
 header ul li a:hover {
-  color: #ff014f;
+  color: #4caf50;
 }
 .home-btn {
   padding: 18px 25px;
@@ -30,7 +31,7 @@ header ul li a:hover {
   box-shadow: 4px 4px 8px #cbcbcb, -4px -4px 8px #ffffff;
 }
 .home-btn:hover {
-  background: #ff014f;
+  background: #4caf50;
   color: white;
 }
 .open {
@@ -38,7 +39,7 @@ header ul li a:hover {
 }
 .header.active {
   height: 12vh;
-  position: fixed;
+  /* position: fixed; */
   top: 0;
   z-index: 1000;
   width: 100%;
@@ -77,7 +78,7 @@ header ul li a:hover {
     position: absolute;
     top: 35px;
     right: 20px;
-    color: #ff014f;
+    color: #4caf50;
     display: block;
     font-size: 25px;
     z-index: 999;
@@ -87,7 +88,7 @@ header ul li a:hover {
   }
   .close.home-btn {
     background: linear-gradient(145deg, #e2e8ec, #ffffff);
-    color: #ff014f;
+    color: #4caf50;
     border-radius: 50%;
     padding: 0;
     width: 60px;
@@ -97,4 +98,15 @@ header ul li a:hover {
   .header.active {
     height: 10vh;
   }
+}
+.apply-btn {
+  margin-bottom: 2px;
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
 }
