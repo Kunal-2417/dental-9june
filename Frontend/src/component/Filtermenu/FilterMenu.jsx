@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 const Sidebar = (props) => {
     const { brand, onApplyFilters } = props;
-    console.log(brand);
+    // console.log(brand);
 
     const [isclear, setClear] = useState(true);
     const [reviewFilter, setReviewFilter] = useState('all');
