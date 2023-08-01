@@ -4,8 +4,11 @@ import "./Cards.css";
 import { Card, CardGroup, Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { CompareContext } from '../../context/CompareContext.jsx';
+import { CartContext } from "../../context/CartContext";
 const Cards = (props) => {
   const { addToCompare } = useContext(CompareContext);
+  const { addToCart } = useContext(CartContext);
+
   const handleAddToCompare = () => {
     const newItem = {
       title: props.title,
@@ -15,7 +18,18 @@ const Cards = (props) => {
     };
 
     addToCompare(newItem);
-    
+
+  };
+  const handleAddToCart = () => {
+    const newItem = {
+      title: props.title,
+      image: props.image,
+      totalLike: props.totalLike,
+      category: props.category,
+    };
+
+    addToCart(newItem);
+
   };
 
 
@@ -77,6 +91,10 @@ const Cards = (props) => {
               <div className="button f_flex mtop">
                 <button className="apply-btn" onClick={handleAddToCompare}>
                   Add to Compare
+                </button>
+                
+                <button className="apply-btn" onClick={handleAddToCart}>
+                  Add to Cart
                 </button>
                 <button className="apply-btn" onClick={handleClick}>
                   Buy on {props.category }

@@ -22,7 +22,7 @@ const scrapeChannel1 = async (url) => {
             console.log(`Scraping data for product : ${index}`)
             // const id = item.getAttribute('div[data-id]')
             const name = item.querySelector('#mf-shop-content > ul > li> div > div.mf-product-details > div.mf-product-content > h2 > a') && item.querySelector('#mf-shop-content > ul > li> div > div.mf-product-details > div.mf-product-content > h2 > a').innerText;
-            const price = item.querySelector('#mf-shop-content > ul > li> div > div.mf-product-details > div.mf-product-content > span') && item.querySelector('#mf-shop-content > ul > li> div > div.mf-product-details > div.mf-product-content > span').innerText;
+            const price = item.querySelector('#mf-shop-content > ul > li  > div > div.mf-product-details > div.mf-product-price-box > span.price') && item.querySelector('#mf-shop-content > ul > li  > div > div.mf-product-details > div.mf-product-price-box > span.price').innerText;
             const link = item.querySelector('#mf-shop-content > ul > li > div > div.mf-product-thumbnail > a') && item.querySelector('#mf-shop-content > ul > li > div > div.mf-product-thumbnail > a').href;
             const image = item.querySelector('#mf-shop-content > ul > li> div > div.mf-product-thumbnail > a > img') && item.querySelector('#mf-shop-content > ul > li> div > div.mf-product-thumbnail > a > img').src;
             data1.list1.push({

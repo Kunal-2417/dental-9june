@@ -102,18 +102,22 @@ const Portfolio = (props) => {
     console.log(props.selectedCompanies);
     const product = props.product
     if (props.selectedCompanies[0][1]) {
-
+      const startTime = performance.now();
       const res = await fetch('http://localhost:3000/creators', {
         method: 'POST',
         body: JSON.stringify({ product }),
         headers: { 'Content-Type': 'application/json' }
       });
+      const endTime = performance.now();
+      const elapsedTime = endTime - startTime; 
       const data = await res.json();
       setResult(data.Data1.list1)
       setTempResult(data.Data1.list1)
       data.Data1.list1.map((value, index) => {
           setBrand((prevBrand) => [...prevBrand, value.name]);
         })
+      const elapsedTimeInSeconds = elapsedTime / 1000; 
+      console.log(`API request took ${elapsedTimeInSeconds} seconds`);
       
     }
     if (props.selectedCompanies[1][1]) {
@@ -711,14 +715,14 @@ const Portfolio = (props) => {
   }
   const handleSortByPrice = () => {
     const sortedResult = [...tempResult].sort((a, b) => {
-      const priceA = parseFloat(a.price.split("₹")[1]);
-      const priceB = parseFloat(b.price.split("₹")[1]);
+      // const priceA = parseFloat(a.price.split("₹")[1]);
+      // const priceB = parseFloat(b.price.split("₹")[1]);
 
-      if (sortOrder === "asc") {
-        return priceA - priceB;
-      } else {
-        return priceB - priceA;
-      }
+      // if (sortOrder === "asc") {
+      //   return priceA - priceB;
+      // } else {
+      //   return priceB - priceA;
+      // }
     });
 
     setTempResult(sortedResult);

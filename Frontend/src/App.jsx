@@ -8,9 +8,12 @@ import AllProduct from "./Pages/Renderingpage/AllProduct"
 import Main from "./Pages/Main/Main"
 import Search from "./component/Searchfearure/Search"
 import Compare from "./Pages/Compareproduct/Compare";
+import Cart from "./Pages/Cart/Cart";
+
 import { CompareProvider } from './context/CompareContext.jsx';
 import { ResultsProvider } from "./context/ResultContext";
 import { BrandProvider } from "./context/BrandContext";
+import { CartProvider } from "./context/CartContext";
 const App = () => {
   return (
     // <>
@@ -20,9 +23,11 @@ const App = () => {
       authorizationParams={{
         redirect_uri: window.location.origin
       }}>
-      <BrandProvider>    
+      <BrandProvider> 
+
         <ResultsProvider>
       <CompareProvider>
+        <CartProvider>
          <BrowserRouter>
 
         <Routes>
@@ -30,10 +35,11 @@ const App = () => {
           <Route path='/allproducts' element={<AllProduct />} />
           <Route path='/Search' element={<Search />} />
           <Route path='/Compare' element={<Compare/>} />
-
+          <Route path='/Cart' element={<Cart/>} />
         </Routes>
         <Footer />
       </BrowserRouter>
+      </CartProvider>
       </CompareProvider>
       </ResultsProvider>
       </BrandProvider>

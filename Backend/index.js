@@ -4,9 +4,11 @@ const bodyPaser=require('body-parser')
 const mongoose = require('mongoose')
 const axios =require('axios')
 const fs=require('fs')
+const CartRouter=require('./Routes/Cart.js')
+const CompareRouter=require('./Routes/Compare.js')
+const dotenv=require('dotenv')
 
 
-const Data =require('./Model/data.js')
 
 
 
@@ -33,19 +35,22 @@ const myScrapers13 = require('./scrapper13');
 // console.log(myScrapers)
 
 const app = express()
-const port=3000
+// const port=3000
+dotenv.config();
 
-// const connect = async () => {
-//     try {
-//         mongoose.connect("mongodb+srv://Kunal_Rathore:Kunal%4020@cluster0.6spjrhx.mongodb.net/webscrap");
-//         console.log("Connect to mongobd");
-//     } catch (error) {
-//         throw error;
-//     }
-// };
+const connect = async () => {
+    try {
+        mongoose.connect(process.env.MONGO);
+        console.log("Connect to mongobd");
+    } catch (error) {
+        throw error;
+    }
+};
 
 
 app.use(bodyPaser.json())
+app.use("/api/cart", CartRouter)
+app.use("/api/compare", CompareRouter)
 app.use(function(req,res,next){
     res.header('Access-Control-Allow-Origin','*')
     res.header('Access-Control-Allow-Headers','Origin,X-Requested-With,Content-Type,Accept')
@@ -165,7 +170,7 @@ app.post('/creator13', async (req, res) => {
 
 
 
-app.listen(port,()=>{
-    // connect();
+app.listen(process.env.Port,()=>{
+    connect();
     console.log(`Example app listening on port ${port}!`)
 })

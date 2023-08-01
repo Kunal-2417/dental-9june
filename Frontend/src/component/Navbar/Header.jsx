@@ -3,10 +3,12 @@ import "./header.css"
 import { useAuth0 } from "@auth0/auth0-react";
 import { NavLink } from 'react-router-dom';
 import { CompareContext } from '../../context/CompareContext';
+import { CartContext } from '../../context/CartContext';
 
 
 const Header = () => {
   const { compareItems } = useContext(CompareContext);
+  const { cartItems } = useContext(CartContext);
   const { loginWithRedirect, isAuthenticated, logout } = useAuth0();
   // fixed Header
   window.addEventListener("scroll", function () {
@@ -49,10 +51,19 @@ const Header = () => {
               <li>
                 <NavLink to="/Compare">
           
-                  <i className="fas fa-shopping-cart">
+                  <i className="fa-solid fa-scale-unbalanced">
+
                   {compareItems.length > 0 && <span className="badge">{compareItems.length}</span>}
                   </i>
+                  
              
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/Cart">
+                  <i className="fa-solid fa-shopping-cart">
+                    {cartItems.length > 0 && <span className="badge">{cartItems.length}</span>}
+                  </i>
                 </NavLink>
               </li>
              {

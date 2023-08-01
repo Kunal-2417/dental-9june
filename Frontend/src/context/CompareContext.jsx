@@ -19,9 +19,13 @@ export const CompareProvider = ({ children }) => {
             }
         }
     };
+    const removeFromCompare = (itemToRemove) => {
+        const updatedCompareItems = compareItems.filter((item) => item.title !== itemToRemove.title);
+        setCompareItems(updatedCompareItems);
+    };
 console.log(compareItems);
     return (
-        <CompareContext.Provider value={{ compareItems, addToCompare }}>
+        <CompareContext.Provider value={{ compareItems, removeFromCompare, addToCompare }}>
             {children}
         </CompareContext.Provider>
     );
