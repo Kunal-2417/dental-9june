@@ -172,5 +172,5 @@ app.post('/creator13', async (req, res) => {
 
 app.listen(process.env.Port,()=>{
     connect();
-    console.log(`Example app listening on port ${port}!`)
+    console.log(`Example app listening on port ${process.env.Port}!`)
 })
