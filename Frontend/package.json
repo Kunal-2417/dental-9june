@@ -22,6 +22,7 @@
     "firebase": "^9.15.0",
     "jsonwebtoken": "^9.0.1",
     "otp-input-react": "^0.3.0",
+    "razorpay": "^2.9.1",
     "react": "^18.2.0",
     "react-bootstrap": "^2.8.0",
     "react-dom": "^18.2.0",

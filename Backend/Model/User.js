@@ -36,7 +36,18 @@ const UserSchema = new mongoose.Schema(
       type: Array,
       date:  new Date(),
       default: [new Date()]
-    }
+    },
+    subscription: {
+      type: String,
+      enum: ['free', 'silver', 'gold'],
+      default: 'free',
+    },
+    subscriptionType: {
+      type: String,
+      enum: ['monthly', 'annually'],
+      default: 'monthly',
+    },
+  
   },
   { timestamps: true }
 );

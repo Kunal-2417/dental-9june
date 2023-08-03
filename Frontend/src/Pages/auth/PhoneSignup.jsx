@@ -91,6 +91,8 @@ const PhoneSignup = () => {
           .then((res) => {
             console.log(res);
             toast.success("Signup successfully");
+            localStorage.setItem('signupData', JSON.stringify(user));
+            console.log(user);
             navigate("/");
             // frontend work
           });

@@ -10,7 +10,7 @@ const dotenv=require('dotenv')
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
 
-
+const {orders, verfiy} = require("./Controllers/paymentController.js")
 // routers import
 const authRoute = require("./routes/authRoute.js");
 
@@ -178,6 +178,11 @@ app.use(cookieParser());
 // routes
 app.use("/api/auth", authRoute);
 app.use(bodyPaser.json());
+
+app.post("/orders", orders);
+app.post("/verfiy", verfiy)
+app.get('/getKey', (req,res) => 
+res.status(200).json({key: process.env.KEY_ID}))
 
 // entry point
 app.get("/", (req, res) => {
