@@ -1,6 +1,7 @@
 const  Razorpay = require('razorpay');
 const  crypto = require("crypto");
 const {PaymentModel} = require("../Model/Payment");
+const {userModel} = require("../Model/User.js");
 
 module.exports.orders = (req, res) => {
 
@@ -21,6 +22,8 @@ module.exports.orders = (req, res) => {
 
 
 module.exports.verfiy =  async (req, res) => {
+    const {uid, email, Subsciption, amount} = req.body;
+    console.log(uid , email, Subsciption, amount);
 const {razorpay_order_id,razorpay_payment_id} = req.body.response;
 
 
@@ -37,8 +40,13 @@ const {razorpay_order_id,razorpay_payment_id} = req.body.response;
         const PaymentSuccess = await new PaymentModel({
             razorpay_order_id: razorpay_order_id,
             razorpay_payment_id: razorpay_payment_id,
-
+            uid: uid,
+            email:email,
+            amount: amount,
+            subscription: userModel.findOneAndUpdate(Subsciption),
+            
         });
+        
          PaymentSuccess.save();
          res.status(201).send({
             success: true,

@@ -57,8 +57,10 @@ const SignUp = () => {
 
           if (res.success) {
             toast.success("Signup successfully");
-            localStorage.setItem('signupData', JSON.stringify(user));
-            console.log(user)
+            localStorage.setItem('signupData', JSON.stringify(
+              result
+            ));
+            console.log(result)
             navigate("/");
           } else {
             toast.error(res.message);

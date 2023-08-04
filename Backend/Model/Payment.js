@@ -2,12 +2,16 @@ const mongoose=require("mongoose");
 
 const PaymentSchema = new mongoose.Schema(
     {
-    //  userId: {
-    //     ref: "userModel",
-    //      type: String,
-    //      required: true,
+     uid: {
+         ref: "userModel",
+         type: String,
+         required: true,
         
-    //  },
+     },
+     email:{
+        type: String,
+        required:true,
+     },
     razorpay_order_id: {
         type: String,
         required: true,
@@ -16,7 +20,15 @@ const PaymentSchema = new mongoose.Schema(
         type: String,
         required: true,
     },
-
+    amount:{
+        type: String,
+        required: true,
+    },
+    Date:{
+        type: String,
+        date:  new Date(),
+        
+    }
 
 
     }

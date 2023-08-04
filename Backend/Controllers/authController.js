@@ -8,7 +8,8 @@ module.exports.googleAuthController = async (req, res, next) => {
   try {
     const user = await userModel.findOne({ email: req.body.email });
  
-   
+   console.log(user);
+  
   if(user) {
      await userModel.findOneAndUpdate({email: user.email},{
       loginDate: [...user.loginDate,   new Date(Date.now())  ],

@@ -163,7 +163,7 @@ const PhoneSignup = () => {
                 >
                   Enter your OTP
                 </label>
-                <OtpInput
+                {/* <OtpInput
                   value={otp}
                   onChange={setOtp}
                   OTPLength={6}
@@ -171,7 +171,16 @@ const PhoneSignup = () => {
                   disabled={false}
                   autoFocus
                   className="opt-container "
-                ></OtpInput>
+                ></OtpInput> */}
+                <OtpInput value={otp}
+                 onChange={setOtp} 
+                 autoFocus 
+                 OTPLength={6}
+                  otpType="number"
+                   disabled={false} 
+                    />
+
+                {/* <input type="Number" value={otp} onChange={setOtp}></input> */}
                 <button
                   onClick={onOTPVerify}
                   className="bg-emerald-600 w-full flex gap-1 items-center justify-center py-2.5 text-white rounded"
