@@ -2,14 +2,15 @@
 const express = require('express');
 const router = express.Router();
 const { Compare } = require('../Model/AddtoCompare');
+const {User}=require("../Model/User");
 
 // Route to add an item to Compare
 router.post('/', async (req, res) => {
     const { userId, name, price, link, img } = req.body;
 
     try {
-        const compare = await Compare.findOne({ userId });
-
+        const compare = await Compare.findOne({userId});
+        console.log(compare);
         if (compare) {
             // User's compare list already exists, add the item to the items array
             compare.items.push({ name, price, link, img });
@@ -22,9 +23,9 @@ router.post('/', async (req, res) => {
             });
         }
 
-        res.status(201).json({ message: 'Item added to compare list successfully' });
+        res.status(201).json({message: 'Item added to compare list successfully' });
     } catch (error) {
-        res.status(500).json({ error: 'Error adding item to compare list' });
+        res.status(500).json({error: 'Error adding item to compare list' });
     }
 });
 
