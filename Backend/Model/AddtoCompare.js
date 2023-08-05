@@ -9,6 +9,10 @@ const CompareSchema = new mongoose.Schema({
         required: true,
     },
     items: [{
+        itemId: {
+            type: String,
+            required: true,
+        },
         name: {
             type: String,
             required: true,

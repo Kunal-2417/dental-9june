@@ -1,7 +1,7 @@
 // cartRouter.js
 const express = require('express');
 const router = express.Router();
-const { Cart } = require('../Model/AddtoCart');
+const { Cart } = require('../Model/AddtoCart.js');
 
 // Route to add an item to Cart
 router.post('/', async (req, res) => {
@@ -24,7 +24,6 @@ router.post('/', async (req, res) => {
 
         res.status(201).json({ message: 'Item added to cart successfully' });
     } catch (error) {
-        console.error('Error adding item to cart:', error);
         res.status(500).json({ error: 'Error adding item to cart' });
     }
 });
