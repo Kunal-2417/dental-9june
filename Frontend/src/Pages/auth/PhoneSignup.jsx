@@ -1,12 +1,12 @@
 import { BsFillShieldLockFill, BsTelephoneFill } from "react-icons/bs";
 import { CgSpinner } from "react-icons/cg";
-
+import { useAuth } from "../../context/AuthContext";
 import axios from "axios";
 import OtpInput from "otp-input-react";
 import { useEffect, useState } from "react";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
-import { auth } from "../../firebase";
+import { Auth } from "../../firebase";
 import { RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth";
 import { toast, Toaster } from "react-hot-toast";
 
@@ -14,7 +14,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 
 const PhoneSignup = () => {
   const navigate = useNavigate();
-
+  const [auth, setAuth] = useAuth();
   const { state } = useLocation();
   // console.log(state)
   const [otp, setOtp] = useState("");
@@ -54,7 +54,7 @@ const PhoneSignup = () => {
 
     const formatPh = "+" + ph;
 
-    signInWithPhoneNumber(auth, formatPh, appVerifier)
+    signInWithPhoneNumber(Auth, formatPh, appVerifier)
       .then((confirmationResult) => {
         window.confirmationResult = confirmationResult;
         
@@ -91,7 +91,13 @@ const PhoneSignup = () => {
           .then((res) => {
             console.log(res);
             toast.success("Signup successfully");
-            localStorage.setItem('signupData', JSON.stringify(user));
+            setAuth({
+              ...auth,
+              user: res.user,
+            });
+            localStorage.setItem("UserInfo", JSON.stringify(res.user));
+
+            
             console.log(user);
             navigate("/");
             // frontend work

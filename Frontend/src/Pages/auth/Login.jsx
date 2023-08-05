@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import { auth, provider } from "../../firebase";
+import { Auth, Provider } from "../../firebase";
 import { signInWithPopup } from "firebase/auth";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
@@ -16,8 +16,8 @@ console.log(user.email);
 console.log(user.phone);
   const navigate = useNavigate();
   const handleSingInWithGoogle = async () => {
-    signInWithPopup(auth, provider).then((result) => {
-      // console.log(result.user);
+    signInWithPopup(Auth, Provider).then((result) => {
+      console.log(result.user);
       fetch("http://localhost:3000/api/auth/google", {
         method: "POST",
         headers: {
@@ -32,8 +32,25 @@ console.log(user.phone);
         .then((res) => res.json())
         .then((res) => {
           console.log(res);
-          toast.success("Login successfully");
-          navigate("/");
+
+          if (res.success) {
+           
+            
+              toast.success(res.data && res.message);
+              setAuth({
+                ...auth,
+                user: res.user,
+                
+              });
+              localStorage.setItem("UserInfo", JSON.stringify(res.user));
+              
+            
+            
+            console.log(result)
+            navigate("/");
+          } else {
+            toast.error(res.message);
+          }
           // frontend work
         });
     });

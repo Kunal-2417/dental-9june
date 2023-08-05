@@ -1,6 +1,6 @@
 import React, { useState,useContext } from "react"
 import "./header.css"
-import { useAuth0 } from "@auth0/auth0-react";
+
 import { NavLink } from 'react-router-dom';
 import { CompareContext } from '../../context/CompareContext';
 import { CartContext } from '../../context/CartContext';
@@ -9,7 +9,7 @@ import { CartContext } from '../../context/CartContext';
 const Header = () => {
   const { compareItems } = useContext(CompareContext);
   const { cartItems } = useContext(CartContext);
-  const { loginWithRedirect, isAuthenticated, logout } = useAuth0();
+ 
   // fixed Header
   window.addEventListener("scroll", function () {
     const header = document.querySelector(".header")
@@ -66,18 +66,12 @@ const Header = () => {
                   </i>
                 </NavLink>
               </li>
-             {
-              isAuthenticated ?
-              <li>
-              <button onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })} >
-                Log Out
-              </button>
-              </li>
-            : 
+             
+             
             <li>
-            <button className="apply-btn"onClick={() => loginWithRedirect()} >Log In</button>
+            <NavLink className="apply-btn" to="/auth/signup" >Signup</NavLink>
           </li>
-             }
+             
 
             </ul>
 

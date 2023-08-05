@@ -14,11 +14,11 @@ const Subscription = () => {
     alert("Its is free and already given");
   };
   const handleOpenRazorpay = async (data) => {
-    const storedSignupData = localStorage.getItem("signupData");
+    const storedSignupData = localStorage.getItem("UserInfo");
     const signupData = JSON.parse(storedSignupData);
-    const uid = signupData.user.uid;
+    const uid = signupData.uid;
     console.log(uid);
-    const email = signupData.user.email;
+    const email = signupData.email;
     console.log(email);
 
     const {

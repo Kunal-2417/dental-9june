@@ -1,16 +1,18 @@
 import React from "react";
 import { useState } from "react";
-import { auth, provider } from "../../firebase";
+import { Auth, Provider } from "../../firebase";
 import { signInWithPopup } from "firebase/auth";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
 import toast from "react-hot-toast";
+import { useAuth } from "../../context/AuthContext";
 const SignUp = () => {
   const [user, setUser] = useState({
     name: "",
     email: "",
     phone: "",
   });
+  const [auth, setAuth] = useAuth();
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     if (!user.name || !user.email || !user.phone) {
@@ -38,7 +40,7 @@ const SignUp = () => {
   };
   const navigate = useNavigate();
   const handleSingInWithGoogle = async () => {
-    signInWithPopup(auth, provider).then((result) => {
+    signInWithPopup(Auth, Provider).then((result) => {
       console.log(result.user);
       fetch("http://localhost:3000/api/auth/google", {
         method: "POST",
@@ -56,11 +58,14 @@ const SignUp = () => {
           console.log(res);
 
           if (res.success) {
-            toast.success("Signup successfully");
-            localStorage.setItem('signupData', JSON.stringify(
-              result
-            ));
-            console.log(result)
+            toast.success(res.data && res.message);
+            setAuth({
+              ...auth,
+              user: res.user,
+            });
+            localStorage.setItem("UserInfo", JSON.stringify(res.user));
+
+            console.log(result);
             navigate("/");
           } else {
             toast.error(res.message);
